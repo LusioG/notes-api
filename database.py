@@ -1,29 +1,30 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
+import os
 
-# URL de conexión a la base SQLite (archivo local tasks.db)
-DATABASE_URL = "sqlite:///./tasks.db"
+# URL de conexión a PostgreSQL (Supabase)
+DATABASE_URL = os.getenv("DATABASE_URL")
 
-
-# Engine = conexión principal a la base de datos.
-# Es el "motor" que usa SQLAlchemy para hablar con la DB.
-# check_same_thread=False permite usar la conexión en múltiples requests (FastAPI es async).
+# Engine principal de conexión a la base
 engine = create_engine(
-        DATABASE_URL,
-        connect_args={"check_same_thread":False}
+    DATABASE_URL,
+    pool_pre_ping=True
 )
-SessionLocal = sessionmaker(bind=engine)
 
-# Clase base para definir los modelos ORM (tablas).
-# Todas las clases de models.py heredan de Base.
+SessionLocal = sessionmaker(
+    autocommit=False,
+    autoflush=False,
+    bind=engine
+)
+
+# Base para los modelos ORM
 Base = declarative_base()
 
-# Dependency de FastAPI para obtener una sesión de DB por request.
-# Abre sesión → la entrega al endpoint → la cierra al terminar.
+
+# Dependency de FastAPI para abrir y cerrar sesiones de DB
 def get_db():
     db = SessionLocal()
-    try: 
+    try:
         yield db
-    finally: 
+    finally:
         db.close()
-
