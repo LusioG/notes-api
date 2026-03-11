@@ -1,18 +1,21 @@
-# Notes API
+# Task Boards API
 
-Simple REST API for managing notes, built with Python and FastAPI.
+REST API for managing task boards and tasks with user authentication.  
+Built with Python and FastAPI.
 
-This API allows users to create, read, update and delete notes.  
-When the application starts, it automatically creates the required database tables for storing notes.
+The API allows users to register, authenticate, create boards and manage tasks inside those boards.
+
+When the application starts, it automatically creates the required database tables defined in the models.
 
 ## Features
 
-- Create notes
-- Retrieve notes
-- Update notes
-- Delete notes
+- User registration and login
+- JWT authentication
+- Create and manage boards
+- Create, update and delete tasks
+- View tasks inside boards
 - Automatic database table creation
-- RESTful endpoints
+- RESTful API
 
 ## Tech Stack
 
@@ -21,29 +24,30 @@ When the application starts, it automatically creates the required database tabl
 - SQLAlchemy
 - SQLite
 - Uvicorn
+- JWT Authentication
 
 ## Installation
 
-Clone the repository:
+Clone the repository
 
 ```
 git clone https://github.com/LusioG/notes-api.git
 cd notes-api
 ```
 
-Install dependencies:
+Install dependencies
 
 ```
 pip install -r requirements.txt
 ```
 
-Run the server:
+Run the server
 
 ```
 uvicorn main:app --reload
 ```
 
-The API will run at:
+The API will start at:
 
 ```
 http://127.0.0.1:8000
@@ -51,7 +55,7 @@ http://127.0.0.1:8000
 
 ## API Documentation
 
-FastAPI automatically generates interactive API documentation.
+FastAPI provides automatic interactive documentation.
 
 Swagger UI:
 
@@ -59,33 +63,135 @@ Swagger UI:
 http://127.0.0.1:8000/docs
 ```
 
-## Example Endpoints
-
-Get all notes
+Health check:
 
 ```
-GET /notes
+http://127.0.0.1:8000/health
 ```
 
-Create a note
+---
+
+# Authentication
+
+Authentication uses JWT tokens.
+
+Login endpoint returns a token that must be sent in protected requests.
+
+Header example:
 
 ```
-POST /notes
+Authorization: Bearer <your_token>
 ```
 
-Update a note
+---
+
+# Endpoints
+
+## General
 
 ```
-PUT /notes/{id}
+GET /
+```
+Check if the API is running.
+
+```
+GET /health
+```
+Health status of the API.
+
+---
+
+# Users
+
+Register a new user
+
+```
+POST /users/register
 ```
 
-Delete a note
+Login
 
 ```
-DELETE /notes/{id}
+POST /users/login
 ```
 
-## Project Structure
+Get current authenticated user
+
+```
+GET /me
+```
+
+---
+
+# Boards
+
+Create a board
+
+```
+POST /boards
+```
+
+List user boards
+
+```
+GET /boards
+```
+
+Update board
+
+```
+PUT /boards/{board_id}
+```
+
+Delete board
+
+```
+DELETE /boards/{board_id}
+```
+
+Get board with its tasks
+
+```
+GET /boards/{id_board}
+```
+
+---
+
+# Tasks
+
+Create a task
+
+```
+POST /tasks
+```
+
+List tasks from a board
+
+```
+GET /tasks?board_id={board_id}
+```
+
+Get task by id
+
+```
+GET /tasks/{task_id}
+```
+
+Update task
+
+```
+PUT /tasks/{task_id}
+```
+
+Delete task
+
+```
+DELETE /tasks/{task_id}
+```
+
+---
+
+# Project Structure
 
 ```
 notes-api
@@ -94,10 +200,14 @@ notes-api
 ├── models.py
 ├── schemas.py
 ├── database.py
+├── security.py
+├── deps.py
 ├── requirements.txt
 └── README.md
 ```
 
-## Author
+---
+
+# Author
 
 Luciano Ivan Grandjean
