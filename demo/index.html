@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>Demo API</title>
+</head>
+
+<body>
+
+<h1>Demo API</h1>
+
+<h2>Registro</h2>
+
+<input id="reg_email" placeholder="email">
+<input id="reg_user" placeholder="username">
+<input id="reg_pass" placeholder="password" type="password">
+
+<button onclick="register()">Registrarse</button>
+
+<hr>
+
+<h2>Login</h2>
+
+<input id="log_email" placeholder="email">
+<input id="log_pass" placeholder="password" type="password">
+
+<button onclick="login()">Login</button>
+
+<hr>
+
+<h2>Probar token</h2>
+
+<button onclick="getMe()">Ver usuario actual</button>
+
+<pre id="resultado"></pre>
+
+<script src="script.js"></script>
+
+</body>
+</html>
