@@ -218,14 +218,14 @@ def register_user(
     if user_exists:
         raise HTTPException(status_code=400, detail="El email ya está registrado")
 
-    #hashed = hash_password(user.password)
+    hashed = hash_password(user.password)
 
     nuevo = User(
         email=user.email,
         username=user.username,
-        password_hash=user.password
+        password_hash=hashed
     )
-    
+
     db.add(nuevo)
     db.commit()
     db.refresh(nuevo)
