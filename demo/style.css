@@ -1,0 +1,368 @@
+/* RESET */
+
+html, body{
+height:100%;
+margin:0;
+font-family: system-ui, Arial;
+background:#f4f6fb;
+}
+
+/* UTILIDADES */
+
+.hidden{
+display:none;
+}
+
+input,select,button{
+padding:8px;
+margin:5px 0;
+font-size:14px;
+}
+
+/* LOGIN */
+
+.auth-container{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.auth-card{
+background:white;
+padding:40px;
+border-radius:14px;
+width:320px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+.auth-card h2{
+text-align:center;
+margin-bottom:20px;
+}
+
+.auth-card input{
+width:100%;
+padding:10px;
+margin:8px 0;
+border-radius:6px;
+border:1px solid #ddd;
+}
+
+.primary{
+width:100%;
+padding:10px;
+background:#4f46e5;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+.primary:hover{
+background:#4338ca;
+}
+
+/* TABS LOGIN */
+
+.auth-tabs{
+display:flex;
+margin-bottom:20px;
+}
+
+.auth-tabs button{
+flex:1;
+padding:8px;
+border:none;
+background:#eee;
+cursor:pointer;
+}
+
+.auth-tabs .active{
+background:#4f46e5;
+color:white;
+}
+
+/* APP CONTAINER */
+
+#app{
+max-width:900px;
+margin:auto;
+padding:20px;
+}
+
+/* BOARDS */
+
+#boards{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+gap:15px;
+margin-bottom:20px;
+}
+
+.board{
+padding:20px;
+border-radius:12px;
+cursor:pointer;
+font-weight:bold;
+box-shadow:0 4px 10px rgba(0,0,0,0.08);
+transition:0.2s;
+}
+
+.board:hover{
+transform:translateY(-3px);
+}
+
+/* TASKS */
+
+#tasks{
+margin-top:10px;
+}
+
+.task{
+background:white;
+padding:12px;
+margin:8px 0;
+border-radius:8px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 3px 8px rgba(0,0,0,0.05);
+}
+
+.task.done{
+opacity:0.6;
+text-decoration:line-through;
+}
+
+.check{
+margin-right:10px;
+}
+
+.task button{
+background:#ef4444;
+border:none;
+color:white;
+border-radius:6px;
+padding:4px 8px;
+cursor:pointer;
+}
+
+.task button:hover{
+background:#dc2626;
+}
+
+#topbar{
+position:fixed;
+top:20px;
+right:20px;
+}
+
+.logout{
+background:#ef4444;
+color:white;
+border:none;
+padding:8px 14px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.logout:hover{
+background:#dc2626;
+}
+/* CARD */
+
+.card{
+background:white;
+padding:20px;
+border-radius:14px;
+box-shadow:0 6px 20px rgba(0,0,0,0.06);
+margin-bottom:20px;
+}
+
+/* INPUT MODERNO */
+
+.modern-input{
+width:100%;
+padding:10px;
+border-radius:10px;
+border:1px solid #ddd;
+margin-bottom:10px;
+font-size:14px;
+}
+
+.modern-input:focus{
+outline:none;
+border-color:#4f46e5;
+}
+
+/* BOTON */
+
+.modern-btn{
+border-radius:10px;
+padding:10px;
+}
+
+/* COLOR PICKER */
+
+.color-picker{
+display:flex;
+gap:10px;
+margin:10px 0;
+}
+
+.color-option{
+width:28px;
+height:28px;
+border-radius:50%;
+cursor:pointer;
+border:3px solid transparent;
+transition:0.2s;
+}
+
+.color-option:hover{
+transform:scale(1.1);
+}
+
+.color-option.active{
+border-color:#333;
+}
+
+/* COLORES */
+
+.pink{
+background:#ffd6e0;
+}
+
+.green{
+background:#d6f5d6;
+}
+
+.blue{
+background:#d6e4ff;
+}
+
+/* LAYOUT DEL TABLERO */
+
+.board-layout{
+display:grid;
+grid-template-columns:300px 1fr;
+gap:20px;
+align-items:start;
+}
+
+/* PANEL DE TAREAS */
+
+.tasks-panel{
+max-height:500px;
+overflow-y:auto;
+}
+
+/* SCROLL BONITO */
+
+.tasks-panel::-webkit-scrollbar{
+width:6px;
+}
+
+.tasks-panel::-webkit-scrollbar-thumb{
+background:#ccc;
+border-radius:10px;
+}
+
+.task-filters{
+display:flex;
+gap:8px;
+margin-bottom:10px;
+}
+
+.task-filters button{
+border:none;
+background:#eee;
+padding:6px 10px;
+border-radius:20px;
+cursor:pointer;
+font-size:12px;
+}
+
+.task-filters button:hover{
+background:#ddd;
+}
+
+.board-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.delete-board{
+border:none;
+background:#ef4444;
+color:white;
+border-radius:6px;
+padding:4px 6px;
+cursor:pointer;
+font-size:12px;
+}
+
+.delete-board:hover{
+background:#dc2626;
+}
+
+
+.task-badge{
+width:16px;
+height:16px;
+border-radius:50%;
+display:inline-block;
+cursor:pointer;
+margin-right:8px;
+}
+
+.pendiente{background:#f59e0b;}
+.en-progreso{background:#3b82f6;}
+.completada{background:#10b981;}
+
+/* Eliminamos el checkbox */
+.task .check {
+  display: none;
+}
+/* Indica que toda la tarea es clickeable */
+.task {
+    cursor: pointer;
+    transition: all 0.2s ease; /* Suaviza la animación */
+    border-left: 5px solid transparent; /* Espacio para el color del estado */
+}
+
+/* Efecto Hover: se eleva y cambia el fondo */
+.task:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    background-color: #fcfcfc;
+}
+
+/* Feedback visual según el estado en el borde izquierdo */
+.task:has(.pendiente) { border-left-color: #f59e0b; }
+.task:has(.en-progreso) { border-left-color: #3b82f6; }
+.task:has(.completada) { border-left-color: #10b981; }
+
+/* Efecto "Active" para cuando el usuario hace clic (el "push") */
+.task:active {
+    transform: translateY(0);
+    filter: brightness(0.95);
+}
+
+/* Mejoramos el estilo de los badges de estado para que parezcan etiquetas */
+.task-state {
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+/* Colores de fondo suaves para las etiquetas */
+.pendiente { background: #fef3c7; color: #92400e; }
+.en-progreso { background: #dbeafe; color: #1e40af; }
+.completada { background: #d1fae5; color: #065f46; }

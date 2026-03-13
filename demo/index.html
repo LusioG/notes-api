@@ -1,39 +1,85 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 <meta charset="UTF-8">
-<title>Demo API</title>
+<title>Task Boards Demo</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<h1>Demo API</h1>
+<!-- LOGIN / REGISTER -->
 
-<h2>Registro</h2>
+<div id="auth" class="auth-container">
 
-<input id="reg_email" placeholder="email">
-<input id="reg_user" placeholder="username">
-<input id="reg_pass" placeholder="password" type="password">
+<div class="auth-card">
 
-<button onclick="register()">Registrarse</button>
+<h2>Task Boards</h2>
+
+<div class="auth-tabs">
+<button onclick="showLogin()" id="login_tab" class="active">Login</button>
+<button onclick="showRegister()" id="register_tab">Register</button>
+</div>
+
+<div id="login_form">
+
+<input id="login_email" placeholder="Email">
+<input id="login_pass" type="password" placeholder="Password">
+
+<button class="primary" onclick="login()">Login</button>
+
+</div>
+
+<div id="register_form" class="hidden">
+
+<input id="reg_email" placeholder="Email">
+<input id="reg_user" placeholder="Username">
+<input id="reg_pass" type="password" placeholder="Password">
+
+<button class="primary" onclick="register()">Register</button>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- APP -->
+
+<div id="app" class="hidden">
+
+<div id="topbar">
+<button onclick="logout()" class="logout">Logout</button>
+</div>
+
+<h1>Task Boards</h1>
+
+<h2>Tus Tableros</h2>
+
+<div id="boards"></div>
+<div class="card">
+
+<h3>Crear tablero</h3>
+
+<input id="board_name" class="modern-input" placeholder="Nombre del tablero">
+
+<div class="color-picker">
+
+<div class="color-option pink active" onclick="selectColor('#ffd6e0', this)"></div>
+<div class="color-option green" onclick="selectColor('#d6f5d6', this)"></div>
+<div class="color-option blue" onclick="selectColor('#d6e4ff', this)"></div>
+
+</div>
+
+<button class="primary modern-btn" onclick="createBoard()">Crear tablero</button>
+
+</div>
 
 <hr>
 
-<h2>Login</h2>
+<div id="board_detail"></div>
 
-<input id="log_email" placeholder="email">
-<input id="log_pass" placeholder="password" type="password">
-
-<button onclick="login()">Login</button>
-
-<hr>
-
-<h2>Probar token</h2>
-
-<button onclick="getMe()">Ver usuario actual</button>
-
-<pre id="resultado"></pre>
+</div>
 
 <script src="script.js"></script>
 
